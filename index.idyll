@@ -1,0 +1,81 @@
+[meta title:"HW" description:"Short description of your project" /]
+[Header
+  fullWidth:true
+  title:"HW10"
+  author:"Tyler Zweig"
+  authorLink:"https://idyll-lang.org"
+  date:"Nov 9, 2021"
+  background:"#222222"
+  color:"#ffffff"
+   /]
+
+[data name:"mons" source:"pokemon.csv" /]
+
+## Data
+
+[Table data:mons /]
+
+## Vega-Lite had issues...
+
+```
+[IdyllVegaLite data:mons spec:'{
+ mark: "line",
+ encoding: {
+    x: {
+      field: "sp_attack", type: "quantitative"
+    },
+    y: {
+      field: "sp_defense",
+      type: "quantitative"
+    }
+  }
+}` /]
+ 
+
+[IdyllVegaLite mode:"vega" spec:`{
+   
+"data": {"url": "https://gist.githubusercontent.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6/raw/92200bc0a673d5ce2110aaad4544ed6c4010f687/pokemon.csv"},
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Attack", "type": "quantitative"},
+    "y": {"field": "Defense", "type": "quantitative"}
+  }
+}` /]
+```
+
+## Plots
+[Scroller currentStep:scrollerIndex]
+  [Graphic style:`{padding: 50}`]
+   [Float position: "left"]
+   ## Attack V Defense
+   [Chart type:"scatter" data:mons domain:`null` range:`null` x:"attack" y:"defense" /]
+   [/Float]
+
+   [Float position: "right"]
+   ## Special Attack V Special Defense
+   [Chart type:"scatter" data:mons domain:`null` range:`null` x:"sp_attack" y:"sp_defense" /]
+   [/Float]
+   
+   [/Graphic]
+
+  [Step]## These stats are very important when choosing a team![/Step]
+  [Step]## Attack and Defense are physical![/Step]
+  [Step]## While the Special counterparts are for projectiles and special moves![/Step]
+  [Step]## However there is more than just these to weigh in! [/Step]
+  [Step]## Like Speed and Health![/Step]
+  [Step]## These plots seem pretty linear to each other...[/Step]
+  [Step]## But that won't be the case for every Stat.[/Step]
+  [Step]## Choose wisely in order to be the best![/Step]
+
+[/Scroller]
+
+
+[div className:"myDiv"]
+[p]
+
+For this homework assignment I chose a datset I have used before, a complete dataset of Pokemon and their in game statistics from the games I loved growing up as a kid. I got this dataset from Kaggle, an open source website where the comunnity is encouraged to try new things with the data others post there! This dataset contains every pokemon, their base statsitics broken down in each category, their typing, and their effectiveness in battle. The plots I was able to give in Idyll only show comparison of the base stats of all 801 pokemon included. I would say these plots look as they should, the more linear they are against each other the more balanced the game is on a base level. I would have liked to use Vega-Lite to show more descripted visuals, but I had issues with the installs so I did what I could with the Idyll built-ins. I am a big fan of the scroller that Idyll has built-in because I think it makes it easy for someone like me to verlay information on top of a graphic to give it more context. If it weren't for this interaction, I really do not think my Idyll page would have made much sense.  
+
+[/p]
+[/div]
+
+
